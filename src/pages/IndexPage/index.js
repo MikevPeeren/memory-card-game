@@ -3,34 +3,45 @@ import FlippableSquare from "../../components/FlippableSquare";
 
 const IndexPage = () => {
   return (
-    <div className="logo logo-container">
+    <div className="card-container">
+      <p className="info">Click the P to get started!</p>
       <FlippableSquare
-        cardClassName="card left"
-        frontClassName="front-card-text"
+        cardClassName="left"
         shouldBeFlippable
         frontText="F"
         backText="This is a Memory Card Game"
       />
       <FlippableSquare
-        cardClassName="card left"
-        frontClassName="front-card-text card-active"
+        cardClassName="left"
+        frontClassName="card-active"
         shouldBeFlippable={false}
         frontText="L"
         backText="This is a Memory Card Game"
       />
       <FlippableSquare
-        cardClassName="card"
-        frontClassName="front-card-text"
         shouldBeFlippable
         frontText="I"
-        backText="This is a timed card memory game. Click the green cards to see what symbol they uncover and try to find the matching symbol underneath the other cards."
+        backText={
+          <div className="instructions">
+            <h2>Instructions</h2>
+            <p>
+              This is a timed card memory game. Click the green cards to see
+              what symbol they uncover and try to find the matching symbol
+              underneath the other cards.
+            </p>
+          </div>
+        }
       />
       <FlippableSquare
-        cardClassName="card"
-        frontClassName="front-card-text"
         shouldBeFlippable
         frontText="P"
-        backText="This is a Memory Card Game"
+        backText={
+          <div className="playgame">
+            <a href="/new-game" className="play">
+              Play
+            </a>
+          </div>
+        }
       />
     </div>
   );

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+const classnames = require("classnames");
 
 class FlippableSquare extends Component {
   constructor(props) {
@@ -10,6 +11,9 @@ class FlippableSquare extends Component {
     const { shouldBeFlippable } = this.props;
 
     if (!shouldBeFlippable) return;
+    if (this.refs.cardComponent) {
+      this.refs.cardComponent.classList.toggle("flipped");
+    }
 
     this.setState(prevState => ({
       isFlipped: !prevState.isFlipped
@@ -18,16 +22,22 @@ class FlippableSquare extends Component {
 
   render() {
     return (
-      <div onClick={this.handleClick} className={this.props.cardClassName}>
-        <div className="flipper">
-          {!this.state.isFlipped ? (
-            <div className={this.props.frontClassName}>
-              {this.props.frontText}
-            </div>
-          ) : (
-            <div className="back back-card-text">{this.props.backText}</div>
-          )}
-        </div>
+      <div
+        ref="cardComponent"
+        onClick={this.handleClick}
+        className={classnames("card", this.props.cardClassName)}
+      >
+        {!this.state.isFlipped ? (
+          <div
+            className={classnames("card-text front", this.props.frontClassName)}
+          >
+            {this.props.frontText}
+          </div>
+        ) : (
+          <div className="card-text back card-active">
+            {this.props.backText}
+          </div>
+        )}
       </div>
     );
   }

@@ -8,5 +8,3 @@ Below is a picture of what a Card Memory Game could look like:
 
 Things that will still be on the ToDo List after making the game fully operational:
 - Convert to Typescript
-- Add Flip Animation
-- Redo Commits with a proper account.
