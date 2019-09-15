@@ -1,6 +1,5 @@
 import React from "react";
 import { Switch, BrowserRouter, Route } from "react-router-dom";
-import "./styles/index.css";
 import IndexPage from "./pages/IndexPage";
 import NewGamePage from "./pages/NewGamePage";
 

@@ -25,18 +25,35 @@ class FlippableSquare extends Component {
       <div
         ref="cardComponent"
         onClick={this.handleClick}
-        className={classnames("card", this.props.cardClassName)}
+        className={classnames(this.props.cardClassName)}
       >
-        {!this.state.isFlipped ? (
-          <div
-            className={classnames("card-text front", this.props.frontClassName)}
-          >
-            {this.props.frontText}
-          </div>
-        ) : (
-          <div className="card-text back card-active">
-            {this.props.backText}
-          </div>
+        {!this.props.isGameCard ? 
+        // If it is not a GameCard it should consists of these CSS Classes and should be able to contain Text
+        (
+          !this.state.isFlipped ? 
+          (
+            <div className={classnames("card-text front", this.props.frontClassName)}>
+              {this.props.frontText}
+            </div>
+          ) 
+          : 
+          (
+            <div className="card-text back card-active">
+              {this.props.backText}
+            </div>
+          )
+        ) 
+        : 
+        // If it IS a GameCard it should be a plain block and the back card should contain a Logo to match upon.
+        !this.state.isFlipped ? 
+        (
+          // ToDo: should contain nothing
+          <div className=""></div>
+        ) 
+        : 
+        (
+          // ToDo: should contain a Logo to match both Logo's
+          <div className=""></div>
         )}
       </div>
     );

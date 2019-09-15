@@ -1,4 +1,5 @@
 import React from "react";
+import "../../styles/index.css";
 import FlippableSquare from "../../components/FlippableSquare";
 
 const IndexPage = () => {
@@ -6,19 +7,20 @@ const IndexPage = () => {
     <div className="card-container">
       <p className="info">Click the P to get started!</p>
       <FlippableSquare
-        cardClassName="left"
+        cardClassName="card left"
         shouldBeFlippable
         frontText="F"
-        backText="This is a Memory Card Game"
+        backText="A Memory Card Game"
       />
       <FlippableSquare
-        cardClassName="left"
+        cardClassName="card left"
         frontClassName="card-active"
         shouldBeFlippable={false}
         frontText="L"
         backText="This is a Memory Card Game"
       />
       <FlippableSquare
+        cardClassName="card"
         shouldBeFlippable
         frontText="I"
         backText={
@@ -33,6 +35,7 @@ const IndexPage = () => {
         }
       />
       <FlippableSquare
+        cardClassName="card"
         shouldBeFlippable
         frontText="P"
         backText={
