@@ -14,7 +14,7 @@ class FlippableSquareRow extends Component<FlippableSquareRowProps> {
         const flippableRows = [];
         for (let i = 0; i < this.props.flippableSquares!; i++) {
             flippableRows.push(
-                <FlippableSquare cardClassName="card-new-game" shouldBeFlippable={true} isGameCard={true} />,
+                <FlippableSquare key={i} cardClassName="card-new-game" shouldBeFlippable={true} isGameCard={true} />,
             );
         }
         return <div className="card-container-new-game">{flippableRows}</div>;
