@@ -9,8 +9,8 @@ class App extends React.Component {
       <div>
         <BrowserRouter>
           <Switch>
-            <Route exact path="/" component={IndexPage} />
-            <Route exact path="/new-game" component={NewGamePage} />
+            <Route exact={true} path="/" component={IndexPage} />
+            <Route exact={true} path="/new-game" component={NewGamePage} />
           </Switch>
         </BrowserRouter>
       </div>
