@@ -40,10 +40,16 @@ class FlippableSquare extends Component<FlippableSquareProps, FlippableSquareSta
 
     handleClick = () => {
         const { shouldBeFlippable } = this.props;
+        const cardComponent = this.cardComponent.current!;
 
         if (!shouldBeFlippable) return;
-        if (this.cardComponent) {
-            this.cardComponent.current!.toggleAttribute('flipped');
+
+        if (cardComponent) {
+            if (cardComponent.classList.contains('flipped')) {
+                cardComponent.classList.remove('flipped');
+            } else {
+                cardComponent.classList.add('flipped');
+            }
         }
 
         this.setState((prevState: Readonly<FlippableSquareState>) => ({
@@ -53,7 +59,6 @@ class FlippableSquare extends Component<FlippableSquareProps, FlippableSquareSta
     };
 
     render() {
-        console.log(this.state.isFlipped);
         return (
             <div ref={this.cardComponent} onClick={this.handleClick} className={classnames(this.props.cardClassName)}>
                 {!this.state.isGameCard ? ( // If it is not a GameCard it should consists of these CSS Classes and should be able to contain Text
