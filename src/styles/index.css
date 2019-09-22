@@ -84,6 +84,14 @@ body {
     background: #c0392b;
 }
 
+/* The icon that will be rendered in order to match */
+.card-icon {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+
 /* The A Href to play the game and be redirected to a new Route */
 .play {
     text-decoration: none;

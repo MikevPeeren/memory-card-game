@@ -9,6 +9,7 @@ interface FlippableSquareProps {
     shouldBeFlippable: boolean;
     frontClassName: string | null;
     isGameCard: boolean;
+    cardIcon: string | undefined;
 }
 
 interface FlippableSquareState {
@@ -24,6 +25,7 @@ class FlippableSquare extends Component<FlippableSquareProps, FlippableSquareSta
         shouldBeFlippable: true,
         frontClassName: null,
         isGameCard: false,
+        cardIcon: undefined,
     };
 
     state: Readonly<FlippableSquareState> = {
@@ -59,21 +61,23 @@ class FlippableSquare extends Component<FlippableSquareProps, FlippableSquareSta
     };
 
     render() {
+        let renderblock;
+        if (!this.state.isGameCard) {
+            if (this.state.isFlipped) {
+                renderblock = <div className="card-text back card-active">{this.props.backText}</div>;
+            } else {
+                const classes = classnames('card-text front', this.props.frontClassName);
+                renderblock = <div className={classes}>{this.props.frontText}</div>;
+            }
+        } else {
+            if (this.state.isFlipped) {
+                renderblock = <img src={this.props.cardIcon} alt="card-icon" className="card-icon"></img>;
+            }
+        }
+
         return (
             <div ref={this.cardComponent} onClick={this.handleClick} className={classnames(this.props.cardClassName)}>
-                {!this.state.isGameCard ? ( // If it is not a GameCard it should consists of these CSS Classes and should be able to contain Text
-                    !this.state.isFlipped ? (
-                        <div className={classnames('card-text front', this.props.frontClassName)}>
-                            {this.props.frontText}
-                        </div>
-                    ) : (
-                        <div className="card-text back card-active">{this.props.backText}</div>
-                    )
-                ) : // If it IS a GameCard it should be a plain block and the back card should contain a Logo to match upon.
-                this.state.isFlipped ? (
-                    // ToDo: should contain a Logo to match both Logo's
-                    <div className="" />
-                ) : null}
+                {renderblock}
             </div>
         );
     }
