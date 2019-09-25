@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { IconProp } from '@fortawesome/fontawesome-svg-core';
 
 import classnames from 'classnames';
 
@@ -9,7 +11,7 @@ interface FlippableSquareProps {
     shouldBeFlippable: boolean;
     frontClassName: string | null;
     isGameCard: boolean;
-    cardIcon: string | undefined;
+    cardIcon: IconProp | undefined;
 }
 
 interface FlippableSquareState {
@@ -71,7 +73,13 @@ class FlippableSquare extends Component<FlippableSquareProps, FlippableSquareSta
             }
         } else {
             if (this.state.isFlipped) {
-                renderblock = <img src={this.props.cardIcon} alt="card-icon" className="card-icon"></img>;
+                if (this.props.cardIcon) {
+                    renderblock = (
+                        <div className="card-div">
+                            <FontAwesomeIcon className="card-icon" icon={this.props.cardIcon} />
+                        </div>
+                    );
+                }
             }
         }
 
