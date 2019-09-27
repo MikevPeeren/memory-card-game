@@ -1,92 +1,86 @@
 import React, { Component } from 'react';
 import FlippableSquare from '../FlippableSquare';
-import { library } from '@fortawesome/fontawesome-svg-core';
-import {
-    IconName,
-    faCoffee,
-    faAirFreshener,
-    faBaby,
-    faAmbulance,
-    faCoins,
-    faCarrot,
-    faCreditCard,
-    faCookie,
-} from '@fortawesome/free-solid-svg-icons';
+import { IconName } from '@fortawesome/free-solid-svg-icons';
 
-interface FlippableSquareRowProps {
-    flippableSquares: number | null;
-}
+import flippableSquaresJSON from '../../utils/easy-game.json';
 
 interface FlippableSquareRowState {
-    iconArray: IconName[];
+    flippableSquares: FlippableSquare[] | undefined;
 }
 
-class FlippableSquareRow extends Component<FlippableSquareRowProps> {
-    static defaultProps: FlippableSquareRowProps = {
-        flippableSquares: null,
+class FlippableSquareRow extends Component<{}, FlippableSquareRowState> {
+    state: FlippableSquareRowState = {
+        flippableSquares: undefined,
     };
 
-    state: Readonly<FlippableSquareRowState> = {
-        // For now this array with duplicated data untill i find a better solution.
-        iconArray: [
-            'coffee',
-            'air-freshener',
-            'baby',
-            'ambulance',
-            'coins',
-            'carrot',
-            'credit-card',
-            'cookie',
-            'coffee',
-            'air-freshener',
-            'baby',
-            'ambulance',
-            'coins',
-            'carrot',
-            'credit-card',
-            'cookie',
-        ],
-    };
-
-    constructor(props: Readonly<FlippableSquareRowProps>) {
+    constructor(props: any) {
         super(props);
-        library.add(faCoffee);
-        library.add(faAirFreshener);
-        library.add(faBaby);
-        library.add(faAmbulance);
-        library.add(faCoins);
-        library.add(faCarrot);
-        library.add(faCreditCard);
-        library.add(faCookie);
+        this.state = {
+            flippableSquares: flippableSquaresJSON,
+        };
     }
 
-    getIcon = () => {
-        if (this.props.flippableSquares) {
-            if (this.state.iconArray) {
-                const selectedIndex = Math.floor(Math.random() * this.state.iconArray.length);
-                const selectedIcon = this.state.iconArray[selectedIndex];
+    // In order to process a Click event on a Square
+    handleClick = (id: number, shouldBeFlippable: boolean) => {
+        if (!shouldBeFlippable) return;
 
-                this.state.iconArray.splice(selectedIndex, 1);
-
-                return selectedIcon;
-            }
+        if (!this.state.flippableSquares) {
+            return;
         }
+
+        this.setState((prevState: any | undefined) => {
+            const cloneState = prevState.flippableSquares;
+
+            if (!cloneState) {
+                return;
+            }
+
+            const flippableSquare = cloneState.find((flippableSquare: any) => flippableSquare.id === id);
+
+            flippableSquare.isFlipped = !flippableSquare.isFlipped;
+
+            const DOMElement = document.getElementById(String(flippableSquare.id));
+
+            // Setting up the transformation.
+            if (DOMElement) {
+                if (DOMElement.classList.contains('flipped')) {
+                    DOMElement.classList.remove('flipped');
+                } else {
+                    DOMElement.classList.add('flipped');
+                }
+            }
+
+            return {
+                ...prevState,
+                flippableSquare,
+            };
+        });
+    };
+
+    checkFlippedCards = () => {
+        //
     };
 
     render() {
-        const flippableRows = [];
-        for (let i = 0; i < this.props.flippableSquares!; i++) {
-            flippableRows.push(
-                <FlippableSquare
-                    key={i}
-                    cardClassName="card-new-game"
-                    cardIcon={this.getIcon()}
-                    shouldBeFlippable={true}
-                    isGameCard={true}
-                />,
-            );
+        if (!this.state.flippableSquares) {
+            return;
         }
-        return <div className="card-container-new-game">{flippableRows}</div>;
+
+        const flippableSquares = this.state.flippableSquares.map((flippableSquare: any) => (
+            <FlippableSquare
+                key={flippableSquare.id}
+                id={flippableSquare.id}
+                cardClassName="card-new-game"
+                cardIcon={flippableSquare.cardIcon as IconName}
+                shouldBeFlippable={true}
+                isGameCard={true}
+                isFlipped={flippableSquare.isFlipped}
+                handleClick={this.handleClick}
+                checkFlippedCards={this.checkFlippedCards}
+            />
+        ));
+
+        return <div className="card-container-new-game">{flippableSquares}</div>;
     }
 }
 

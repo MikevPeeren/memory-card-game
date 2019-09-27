@@ -51,7 +51,7 @@ body {
 }
 
 /* Property for a card to have an animation to be flipped. */
-.card-new-game.flipped {
+.flipped {
     transform: rotateY(180deg);
 }
 

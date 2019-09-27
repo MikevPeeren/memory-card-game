@@ -1,0 +1,82 @@
+[
+    {
+        "id": 1,
+        "cardIcon": "coffee",
+        "isFlipped": false
+    },
+    {
+        "id": 2,
+        "cardIcon": "coffee",
+        "isFlipped": false
+    },
+    {
+        "id": 3,
+        "cardIcon": "air-freshener",
+        "isFlipped": false
+    },
+    {
+        "id": 4,
+        "cardIcon": "air-freshener",
+        "isFlipped": false
+    },
+    {
+        "id": 5,
+        "cardIcon": "cookie",
+        "isFlipped": false
+    },
+    {
+        "id": 6,
+        "cardIcon": "cookie",
+        "isFlipped": false
+    },
+    {
+        "id": 7,
+        "cardIcon": "credit-card",
+        "isFlipped": false
+    },
+    {
+        "id": 8,
+        "cardIcon": "credit-card",
+        "isFlipped": false
+    },
+    {
+        "id": 9,
+        "cardIcon": "carrot",
+        "isFlipped": false
+    },
+    {
+        "id": 10,
+        "cardIcon": "carrot",
+        "isFlipped": false
+    },
+    {
+        "id": 11,
+        "cardIcon": "coins",
+        "isFlipped": false
+    },
+    {
+        "id": 12,
+        "cardIcon": "coins",
+        "isFlipped": false
+    },
+    {
+        "id": 13,
+        "cardIcon": "ambulance",
+        "isFlipped": false
+    },
+    {
+        "id": 14,
+        "cardIcon": "ambulance",
+        "isFlipped": false
+    },
+    {
+        "id": 15,
+        "cardIcon": "baby",
+        "isFlipped": false
+    },
+    {
+        "id": 16,
+        "cardIcon": "baby",
+        "isFlipped": false
+    }
+]
