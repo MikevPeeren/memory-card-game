@@ -1,7 +1,7 @@
 import React from 'react';
 import { Switch, BrowserRouter, Route } from 'react-router-dom';
 import IndexPage from './pages/IndexPage';
-import NewGamePage from './pages/NewGamePage';
+import NewGamePage from './pages/GamePage';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import {
     faCoffee,

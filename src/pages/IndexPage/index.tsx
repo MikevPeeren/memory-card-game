@@ -13,6 +13,7 @@ const IndexPage = () => {
                 shouldBeFlippable={true}
                 frontText="F"
                 backText="A Memory Card Game"
+                handleClick=''
             />
             <FlippableSquare
                 key={2}

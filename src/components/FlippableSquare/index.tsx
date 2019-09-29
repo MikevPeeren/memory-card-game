@@ -16,6 +16,7 @@ interface FlippableSquareProps {
     checkFlippedCards: Function | undefined;
     handleClick: any;
     isFlipped: boolean;
+    hasBeenMatched: boolean;
 }
 
 class FlippableSquare extends Component<FlippableSquareProps> {
@@ -31,9 +32,12 @@ class FlippableSquare extends Component<FlippableSquareProps> {
         checkFlippedCards: undefined,
         handleClick: undefined,
         isFlipped: false,
+        hasBeenMatched: false,
     };
 
     handleClick = () => {
+        if(this.props.hasBeenMatched) return;
+
         if (this.props.handleClick) {
             this.props.handleClick(this.props.id, this.props.shouldBeFlippable);
         }
@@ -52,8 +56,11 @@ class FlippableSquare extends Component<FlippableSquareProps> {
             if (this.props.isFlipped) {
                 if (this.props.cardIcon) {
                     renderblock = (
-                        <div className="card-div">
-                            <FontAwesomeIcon className="card-icon" icon={this.props.cardIcon} />
+                        <div className="card-div" >
+                            <FontAwesomeIcon
+                                className={classnames('card-icon')}
+                                icon={this.props.cardIcon}
+                            />
                         </div>
                     );
                 }

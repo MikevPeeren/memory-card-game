@@ -2,63 +2,112 @@ import React, { Component } from 'react';
 import FlippableSquare from '../FlippableSquare';
 import { IconName } from '@fortawesome/free-solid-svg-icons';
 
-import flippableSquaresJSON from '../../utils/easy-game.json';
+import flippableSquaresJSON from '../../assets/easy-game.json';
 
 interface FlippableSquareRowState {
-    flippableSquares: FlippableSquare[] | undefined;
+    flippableSquares: FlippableSquare[];
+    flippedSquares: FlippableSquare[];
 }
 
 class FlippableSquareRow extends Component<{}, FlippableSquareRowState> {
     state: FlippableSquareRowState = {
-        flippableSquares: undefined,
+        flippableSquares: [],
+        flippedSquares: [],
     };
 
     constructor(props: any) {
         super(props);
         this.state = {
             flippableSquares: flippableSquaresJSON,
+            flippedSquares: [],
         };
     }
 
-    // In order to process a Click event on a Square
+    // The Handle Click of a card.
     handleClick = (id: number, shouldBeFlippable: boolean) => {
+        // If it shouldn't be able to be flipped return.
         if (!shouldBeFlippable) return;
 
-        if (!this.state.flippableSquares) {
-            return;
-        }
+        this.setState((prevState: FlippableSquareRowState) => {
+            const { flippableSquares, flippedSquares } = prevState;
 
-        this.setState((prevState: any | undefined) => {
-            const cloneState = prevState.flippableSquares;
+            // Find the specific card that matches the ID provided
+            const flippableSquare: any = flippableSquares.find((flippableSquare: any) => flippableSquare.id === id);
+            if (!flippableSquare) return;
 
-            if (!cloneState) {
-                return;
-            }
+            console.log(flippableSquare);
 
-            const flippableSquare = cloneState.find((flippableSquare: any) => flippableSquare.id === id);
-
+            // Set the flipped property opposite as it is now.
             flippableSquare.isFlipped = !flippableSquare.isFlipped;
+            this.flipCard(flippableSquare.id);
 
-            const DOMElement = document.getElementById(String(flippableSquare.id));
-
-            // Setting up the transformation.
-            if (DOMElement) {
-                if (DOMElement.classList.contains('flipped')) {
-                    DOMElement.classList.remove('flipped');
-                } else {
-                    DOMElement.classList.add('flipped');
-                }
+            // If it is flipped push it to the flipped squares array.
+            if (flippableSquare.isFlipped) {
+                flippedSquares.push(flippableSquare.id);
             }
 
             return {
                 ...prevState,
-                flippableSquare,
+                flippableSquares,
+                flippedSquares,
+            };
+        });
+
+        // Call the handleFlippedCards method in order to check if cards are matched.
+
+        setTimeout(() => {
+            this.handleFlippedCards();
+        }, 1337);
+    };
+
+    handleFlippedCards = () => {
+        this.setState((prevState: FlippableSquareRowState) => {
+            const { flippableSquares, flippedSquares } = prevState;
+
+            const firstFlippedCard: any = flippableSquares.find(
+                (flippableSquare: any) => flippableSquare.id === flippedSquares[0],
+            );
+            const secondFlippedCard: any = flippableSquares.find(
+                (flippableSquare: any) => flippableSquare.id === flippedSquares[1],
+            );
+
+            if (!firstFlippedCard || !secondFlippedCard) return;
+            if (firstFlippedCard.cardIcon === secondFlippedCard.cardIcon) {
+                firstFlippedCard.hasBeenMatched = true;
+                secondFlippedCard.hasBeenMatched = true;
+            } else {
+                flippedSquares.forEach((element: any) => {
+                    const flippableSquareFound: any = flippableSquares.find(
+                        (flippableSquare: any) => flippableSquare.id === element,
+                    );
+
+                    flippableSquareFound.isFlipped = !flippableSquareFound.isFlipped;
+                    this.flipCard(flippableSquareFound.id);
+                });
+            }
+
+            flippedSquares.length = 0;
+
+            return {
+                ...prevState,
+                flippableSquares,
+                flippedSquares,
             };
         });
     };
 
-    checkFlippedCards = () => {
-        //
+    // Function so the card can get flipped over
+    flipCard = (id: number) => {
+        // Making sure the card gets their correct css transformation.
+        const DOMElement = document.getElementById(String(id));
+
+        if (DOMElement) {
+            if (DOMElement.classList.contains('flipped')) {
+                DOMElement.classList.remove('flipped');
+            } else {
+                DOMElement.classList.add('flipped');
+            }
+        }
     };
 
     render() {
@@ -76,7 +125,7 @@ class FlippableSquareRow extends Component<{}, FlippableSquareRowState> {
                 isGameCard={true}
                 isFlipped={flippableSquare.isFlipped}
                 handleClick={this.handleClick}
-                checkFlippedCards={this.checkFlippedCards}
+                hasBeenMatched={flippableSquare.hasBeenMatched}
             />
         ));
 
