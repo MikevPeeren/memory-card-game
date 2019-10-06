@@ -53,7 +53,7 @@ class FlippableSquare extends Component<FlippableSquareProps, FlippableSquareSta
 			// Kinda want to do this another way but could not figure out how in an elegant way :(
 			if (!this.props.shouldBeFlippable) return;
 
-			// Set the flipped state 
+			// Set the flipped state.
 			this.setState((prevState: FlippableSquareState) => {
 				prevState.isFlipped = !prevState.isFlipped;
 				return {

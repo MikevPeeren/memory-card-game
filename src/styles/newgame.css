@@ -15,6 +15,7 @@ body {
 	perspective: 1000px;
 	position: absolute;
 	overflow: hidden;
+	left: 0;
 }
 
 /* Default Card properties */
@@ -69,4 +70,27 @@ body {
 	opacity: 60%;
 	transform: translate(-50%, -50%);
 	font-size: 100px;
+}
+
+/* The progressbar which is in fact the Timer */
+.progressbar {
+	height: 5px;
+}
+
+/* Regarding the Alert that will be shown when the Timer will not get met */
+.game-over {
+	position: absolute;
+	width: 400px;
+	height: 150px;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: auto;
+	text-align: center;
+	z-index: 1;
+}
+
+.game-over-display {
+	display: none;
 }

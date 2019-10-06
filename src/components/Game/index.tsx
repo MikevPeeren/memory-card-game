@@ -2,24 +2,30 @@ import React, { Component } from 'react';
 import FlippableSquare from '../FlippableSquare';
 import { IconName } from '@fortawesome/free-solid-svg-icons';
 
+import ProgressBar from 'react-bootstrap/ProgressBar';
+import Alert from 'react-bootstrap/Alert';
+
 import flippableSquaresJSON from '../../assets/easy-game.json';
 
 interface GameState {
 	flippableSquares: FlippableSquare[];
 	flippedSquares: FlippableSquare[];
+	progressBarValue: number;
 }
 
 class Game extends Component<{}, GameState> {
 	state: GameState = {
 		flippableSquares: [],
-		flippedSquares: []
+		flippedSquares: [],
+		progressBarValue: 0
 	};
 
 	constructor(props: {}) {
 		super(props);
 		this.state = {
 			flippableSquares: flippableSquaresJSON,
-			flippedSquares: []
+			flippedSquares: [],
+			progressBarValue: 0
 		};
 	}
 
@@ -121,6 +127,33 @@ class Game extends Component<{}, GameState> {
 		}
 	};
 
+	// Updating the progressbar with 5% each time.
+	updateProgressBar() {
+		this.setState((prevState: GameState) => {
+			const { flippableSquares, flippedSquares } = prevState;
+			let progressBarValue = prevState.progressBarValue;
+
+			if (progressBarValue >= 100) {
+				const DOMElement = document.getElementById('game-over');
+				if (DOMElement) {
+					DOMElement.classList.remove('game-over-display');
+				}
+				prevState.flippableSquares = [];
+			} else {
+				progressBarValue = prevState.progressBarValue + 5;
+			}
+
+			return {
+				progressBarValue
+			};
+		});
+	}
+
+	// If the component is mounted update the progressbart
+	componentDidMount() {
+		setInterval(() => this.updateProgressBar(), 1000);
+	}
+
 	render() {
 		if (!this.state.flippableSquares) {
 			return;
@@ -141,7 +174,19 @@ class Game extends Component<{}, GameState> {
 			/>
 		));
 
-		return <div className="card-container-new-game">{flippableSquares}</div>;
+		return (
+			<div className="card-container-new-game">
+				<Alert id="game-over" className="game-over game-over-display" variant="danger">
+					<Alert.Heading>Game Over</Alert.Heading>
+					<p className="mb-0">
+						<br />
+						You did not complete the game within the given time period. Please try again, by refreshing. :)
+					</p>
+				</Alert>
+				<ProgressBar className="progressbar" variant="warning" now={this.state.progressBarValue} />
+				{flippableSquares}
+			</div>
+		);
 	}
 }
 
