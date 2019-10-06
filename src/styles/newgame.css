@@ -1,70 +1,72 @@
 /* Defining the Body Color */
 body {
-    background: #333;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
+	background: #333;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
 }
 
 /* The Container that keeps consists of all the cards. */
 .card-container-new-game {
-    display: block;
-    width: 100%;
-    height: 100%;
-    background-color: transparent;
-    perspective: 1000px;
-    position: absolute;
-    overflow: hidden;
+	display: block;
+	width: 100%;
+	height: 100%;
+	background-color: transparent;
+	perspective: 1000px;
+	position: absolute;
+	overflow: hidden;
 }
 
 /* Default Card properties */
 .card-new-game {
-    background-color: #16a085;
-    display: inline-block;
-    width: 25%;
-    height: 25%;
-    cursor: default;
-    position: relative;
-    vertical-align: top;
-    transition: transform 0.8s;
-    transform-style: preserve-3d;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+	background-color: #16a085;
+	display: inline-block;
+	width: 25%;
+	height: 25%;
+	cursor: default;
+	position: relative;
+	vertical-align: top;
+	transition: transform 0.8s;
+	transform-style: preserve-3d;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
 /* The style of a Card when it is not yet flipped */
 .card-new-game-text.front {
-    line-height: 225px;
-    font-size: 130px;
-    transform: rotateZ(0deg);
+	line-height: 225px;
+	font-size: 130px;
+	transform: rotateZ(0deg);
 }
 
 /* The style of a Card when it IS flipped */
 .card-new-game-text.back {
-    font-size: 10px;
-    width: 225px;
-    height: 225px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: absolute;
-    transform: rotateY(180deg);
+	font-size: 10px;
+	width: 225px;
+	height: 225px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: absolute;
+	transform: rotateY(180deg);
 }
 
 /* Property for a card to have an animation to be flipped. */
 .flipped {
-    transform: rotateY(180deg);
+	transform: rotateY(180deg);
 }
 
 /* The div that contains the Card Icon */
 .card-div {
-    text-align: center;
+	text-align: center;
 }
 
 /* The icon that will be rendered in order to match */
 .card-icon {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 100px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	color: #fff;
+	opacity: 60%;
+	transform: translate(-50%, -50%);
+	font-size: 100px;
 }

@@ -1,9 +1,9 @@
 import React from 'react';
 import '../../styles/newgame.css';
-import FlippableSquareRow from '../../components/FlippableSquareRow';
+import Game from '../../components/Game';
 
 const NewGamePage = () => {
-    return <FlippableSquareRow />;
+	return <Game />;
 };
 
 export default NewGamePage;
