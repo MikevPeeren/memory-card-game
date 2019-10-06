@@ -4,6 +4,10 @@ import { IconName } from '@fortawesome/fontawesome-svg-core';
 
 import classnames from 'classnames';
 
+interface FlippableSquareState {
+	id: number | null;
+	isFlipped: boolean;
+}
 interface FlippableSquareProps {
 	id: number | null;
 	cardClassName: string | null;
@@ -19,7 +23,12 @@ interface FlippableSquareProps {
 	hasBeenMatched: boolean;
 }
 
-class FlippableSquare extends Component<FlippableSquareProps> {
+class FlippableSquare extends Component<FlippableSquareProps, FlippableSquareState> {
+	state: FlippableSquareState = {
+		id: null,
+		isFlipped: false
+	};
+
 	static defaultProps: FlippableSquareProps = {
 		id: null,
 		cardClassName: null,
@@ -40,13 +49,34 @@ class FlippableSquare extends Component<FlippableSquareProps> {
 
 		if (this.props.handleClick) {
 			this.props.handleClick(this.props.id, this.props.shouldBeFlippable);
+		} else {
+			// Kinda want to do this another way but could not figure out how in an elegant way :(
+			if (!this.props.shouldBeFlippable) return;
+
+			// Set the flipped state 
+			this.setState((prevState: FlippableSquareState) => {
+				prevState.isFlipped = !prevState.isFlipped;
+				return {
+					...prevState
+				};
+			});
+
+			const DOMElement = document.getElementById(String(this.props.id));
+
+			if (DOMElement) {
+				if (DOMElement.classList.contains('flipped')) {
+					DOMElement.classList.remove('flipped');
+				} else {
+					DOMElement.classList.add('flipped');
+				}
+			}
 		}
 	};
 
 	render() {
 		let renderblock;
 		if (!this.props.isGameCard) {
-			if (this.props.isFlipped) {
+			if (this.state.isFlipped) {
 				renderblock = <div className="card-text back card-active">{this.props.backText}</div>;
 			} else {
 				const classes = classnames('card-text front', this.props.frontClassName);

@@ -15,7 +15,7 @@ class Game extends Component<{}, GameState> {
 		flippedSquares: []
 	};
 
-	constructor(props: any) {
+	constructor(props: {}) {
 		super(props);
 		this.state = {
 			flippableSquares: flippableSquaresJSON,

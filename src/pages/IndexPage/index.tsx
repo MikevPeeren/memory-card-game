@@ -11,9 +11,9 @@ const IndexPage = () => {
 				id={1}
 				cardClassName="card left"
 				shouldBeFlippable={true}
+				isFlipped={false}
 				frontText="F"
 				backText="A Memory Card Game"
-				handleClick=""
 			/>
 			<FlippableSquare
 				key={2}
@@ -21,6 +21,7 @@ const IndexPage = () => {
 				cardClassName="card left"
 				frontClassName="card-active"
 				shouldBeFlippable={false}
+				isFlipped={false}
 				frontText="L"
 				backText="This is a Memory Card Game"
 			/>
@@ -29,6 +30,7 @@ const IndexPage = () => {
 				id={3}
 				cardClassName="card"
 				shouldBeFlippable={true}
+				isFlipped={false}
 				frontText="I"
 				backText={
 					<div className="instructions">
@@ -45,6 +47,7 @@ const IndexPage = () => {
 				id={4}
 				cardClassName="card"
 				shouldBeFlippable={true}
+				isFlipped={false}
 				frontText="P"
 				backText={
 					<div className="playgame">
