@@ -130,7 +130,6 @@ class Game extends Component<{}, GameState> {
 	// Updating the progressbar with 5% each time.
 	updateProgressBar() {
 		this.setState((prevState: GameState) => {
-			const { flippableSquares, flippedSquares } = prevState;
 			let progressBarValue = prevState.progressBarValue;
 
 			if (progressBarValue >= 100) {
