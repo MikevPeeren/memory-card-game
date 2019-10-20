@@ -26,11 +26,13 @@ cache:
 before_script:
   - apt-get update -qq && apt-get install
 
-# We define the diffferent Steps here by name. By defining the Stage we can see those steps in the pipline by that name.
+# We define the diffferent Steps here by name, by defining the Stage we can see those steps in the pipline by that name.
+# A Runner can be specified for example like:
+# tags:
+#   - node
+# Runners run the code. They are isolated (virtual) machines that pick up jobs through the coordinator API of GitLab CI.
 Build:
   stage: build
-  tags:
-    - node
   before_script:
     - yarn config set cache-folder .yarn
     - yarn install
@@ -42,16 +44,12 @@ Build:
 
 Code_Coverage:
   stage: test
-  tags:
-    - node
   script:
     - yarn lint
     - echo 👨🏻‍💻The linter has succesfully passed 👨🏻‍💻
 
 Jest_Tests:
   stage: test
-  tags:
-    - node
   script:
     - yarn test
     - echo 🧪 All of the Jest Tests have passed. 🧪
