@@ -14,4 +14,6 @@
   Below is a picture of what the homescreen looks like.
 </p>
 
-<img width="50%" height="50%" src="https://i.imgur.com/fgQLjUx.png">
+<p align="center">
+  <img width="50%" height="50%" src="https://i.imgur.com/fgQLjUx.png">
+</p>

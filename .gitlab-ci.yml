@@ -36,19 +36,17 @@ Build:
   before_script:
     - yarn config set cache-folder .yarn
     - yarn install
-  script:
-    - yarn start
   artifacts:
     paths:
       - node_modules/
 
-Code_Coverage:
+Code Coverage:
   stage: test
   script:
     - yarn lint
     - echo 👨🏻‍💻The linter has succesfully passed 👨🏻‍💻
 
-Jest_Tests:
+Jest:
   stage: test
   script:
     - yarn test
