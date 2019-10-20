@@ -15,10 +15,11 @@ stages:
   - test
 
 # Specify what needs to be Cached so future pipelines go quicker.
-cache:
+cache: &global_cache
   paths:
     - node_modules/
-    - .yarn
+    - public/
+  policy: pull-push
 
 # We tell GitLab to install all the packages
 # before running anything.
@@ -33,6 +34,9 @@ before_script:
 # Runners run the code. They are isolated (virtual) machines that pick up jobs through the coordinator API of GitLab CI.
 Build:
   stage: build
+  cache:
+    # inherit all global cache settings
+    <<: *global_cache
   before_script:
     - yarn config set cache-folder .yarn
   script:
@@ -43,12 +47,22 @@ Build:
 
 Code Coverage:
   stage: test
+  cache:
+    # inherit all global cache settings
+    <<: *global_cache
+    # override the policy
+    policy: pull
   script:
     - yarn lint
     - echo 👨🏻‍💻The linter has succesfully passed 👨🏻‍💻
 
 Jest:
   stage: test
+  cache:
+    # inherit all global cache settings
+    <<: *global_cache
+    # override the policy
+    policy: pull
   script:
     - yarn test
     - echo 🧪 All of the Jest Tests have passed. 🧪
