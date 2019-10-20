@@ -2,7 +2,7 @@ import React from 'react';
 import '../../styles/newgame.css';
 import Game from '../../components/Game';
 
-const NewGamePage = () => {
+const NewGamePage = (): JSX.Element => {
 	return <Game />;
 };
 

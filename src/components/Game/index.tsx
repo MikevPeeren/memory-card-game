@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import FlippableSquare from '../FlippableSquare';
-import { IconName } from '@fortawesome/free-solid-svg-icons';
-
 import ProgressBar from 'react-bootstrap/ProgressBar';
 import Alert from 'react-bootstrap/Alert';
+
+import { IconName } from '@fortawesome/free-solid-svg-icons';
+
+import FlippableSquare from '../FlippableSquare';
 
 import flippableSquaresJSON from '../../assets/easy-game.json';
 
@@ -17,7 +18,7 @@ class Game extends Component<{}, GameState> {
 	state: GameState = {
 		flippableSquares: [],
 		flippedSquares: [],
-		progressBarValue: 0
+		progressBarValue: 0,
 	};
 
 	constructor(props: {}) {
@@ -25,8 +26,13 @@ class Game extends Component<{}, GameState> {
 		this.state = {
 			flippableSquares: flippableSquaresJSON,
 			flippedSquares: [],
-			progressBarValue: 0
+			progressBarValue: 0,
 		};
+	}
+
+	// If the component is mounted update the progressbart
+	componentDidMount() {
+		setInterval(() => this.updateProgressBar(), 1000);
 	}
 
 	handleClick = (id: number, shouldBeFlippable: boolean) => {
@@ -51,7 +57,7 @@ class Game extends Component<{}, GameState> {
 			return {
 				...prevState,
 				flippableSquares,
-				flippedSquares
+				flippedSquares,
 			};
 		});
 
@@ -72,10 +78,10 @@ class Game extends Component<{}, GameState> {
 			} else {
 				// Find the two elements in the FlippedSquares array.
 				const firstFlippedCard: any = flippableSquares.find(
-					(flippableSquare: any) => flippableSquare.id === flippedSquares[0]
+					(flippableSquare: any) => flippableSquare.id === flippedSquares[0],
 				);
 				const secondFlippedCard: any = flippableSquares.find(
-					(flippableSquare: any) => flippableSquare.id === flippedSquares[1]
+					(flippableSquare: any) => flippableSquare.id === flippedSquares[1],
 				);
 
 				// If there is no first or second flipped card return.
@@ -93,7 +99,7 @@ class Game extends Component<{}, GameState> {
 			return {
 				...prevState,
 				flippableSquares,
-				flippedSquares
+				flippedSquares,
 			};
 		});
 	};
@@ -103,7 +109,7 @@ class Game extends Component<{}, GameState> {
 		const { flippableSquares, flippedSquares } = prevState;
 		flippedSquares.forEach((element: any) => {
 			const flippableSquareFound: any = flippableSquares.find(
-				(flippableSquare: any) => flippableSquare.id === element
+				(flippableSquare: any) => flippableSquare.id === element,
 			);
 
 			flippableSquareFound.isFlipped = !flippableSquareFound.isFlipped;
@@ -130,7 +136,7 @@ class Game extends Component<{}, GameState> {
 	// Updating the progressbar with 5% each time.
 	updateProgressBar() {
 		this.setState((prevState: GameState) => {
-			let progressBarValue = prevState.progressBarValue;
+			let { progressBarValue } = prevState;
 
 			if (progressBarValue >= 100) {
 				const DOMElement = document.getElementById('game-over');
@@ -143,14 +149,9 @@ class Game extends Component<{}, GameState> {
 			}
 
 			return {
-				progressBarValue
+				progressBarValue,
 			};
 		});
-	}
-
-	// If the component is mounted update the progressbart
-	componentDidMount() {
-		setInterval(() => this.updateProgressBar(), 1000);
 	}
 
 	render() {
@@ -165,8 +166,8 @@ class Game extends Component<{}, GameState> {
 				id={flippableSquare.id}
 				cardClassName="card-new-game"
 				cardIcon={flippableSquare.cardIcon as IconName}
-				shouldBeFlippable={true}
-				isGameCard={true}
+				shouldBeFlippable
+				isGameCard
 				isFlipped={flippableSquare.isFlipped}
 				handleClick={this.handleClick}
 				hasBeenMatched={flippableSquare.hasBeenMatched}

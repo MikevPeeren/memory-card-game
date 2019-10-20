@@ -11,7 +11,7 @@ import {
 	faCoins,
 	faCarrot,
 	faCreditCard,
-	faCookie
+	faCookie,
 } from '@fortawesome/free-solid-svg-icons';
 
 library.add(faCoffee);

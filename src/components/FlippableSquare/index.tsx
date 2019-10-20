@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// eslint-disable-next-line no-unused-vars
 import { IconName } from '@fortawesome/fontawesome-svg-core';
 
 import classnames from 'classnames';
@@ -18,7 +19,7 @@ interface FlippableSquareProps {
 	isGameCard: boolean;
 	cardIcon: IconName | undefined;
 	checkFlippedCards: Function | undefined;
-	handleClick: any;
+	handleClick: Function | undefined;
 	isFlipped: boolean;
 	hasBeenMatched: boolean;
 }
@@ -26,7 +27,7 @@ interface FlippableSquareProps {
 class FlippableSquare extends Component<FlippableSquareProps, FlippableSquareState> {
 	state: FlippableSquareState = {
 		id: null,
-		isFlipped: false
+		isFlipped: false,
 	};
 
 	static defaultProps: FlippableSquareProps = {
@@ -41,7 +42,7 @@ class FlippableSquare extends Component<FlippableSquareProps, FlippableSquareSta
 		checkFlippedCards: undefined,
 		handleClick: undefined,
 		isFlipped: false,
-		hasBeenMatched: false
+		hasBeenMatched: false,
 	};
 
 	handleClick = () => {
@@ -57,7 +58,7 @@ class FlippableSquare extends Component<FlippableSquareProps, FlippableSquareSta
 			this.setState((prevState: FlippableSquareState) => {
 				prevState.isFlipped = !prevState.isFlipped;
 				return {
-					...prevState
+					...prevState,
 				};
 			});
 
@@ -73,7 +74,7 @@ class FlippableSquare extends Component<FlippableSquareProps, FlippableSquareSta
 		}
 	};
 
-	render() {
+	render(): JSX.Element {
 		let renderblock;
 		if (!this.props.isGameCard) {
 			if (this.state.isFlipped) {
