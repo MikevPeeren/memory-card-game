@@ -35,6 +35,7 @@ Build:
   stage: build
   before_script:
     - yarn config set cache-folder .yarn
+  script:
     - yarn install
   artifacts:
     paths:
