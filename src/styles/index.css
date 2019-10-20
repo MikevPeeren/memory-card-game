@@ -36,6 +36,7 @@ body {
 	transition: transform 0.8s;
 	transform-style: preserve-3d;
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+	border: 0px !important;
 }
 
 /* Default Card text properties that are for both Front and Back Cards.*/
@@ -85,7 +86,8 @@ body {
 }
 
 /* The A Href to play the game and be redirected to a new Route */
-.play {
+.play,
+.play:hover {
 	text-decoration: none;
 	color: #fff;
 	display: block;
