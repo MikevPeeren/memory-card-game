@@ -9,6 +9,7 @@ module.exports = {
 	plugins: ['react', '@typescript-eslint', 'prettier', 'jsx-a11y'],
 	env: {
 		browser: true,
+		jest: true,
 	},
 	rules: {
 		'prettier/prettier': ['error', { singleQuote: true }],
