@@ -1,0 +1,6 @@
+{
+	"short_name": "Memory",
+	"name": "Memory, the Card Game",
+	"start_url": ".",
+	"display": "standalone"
+}
