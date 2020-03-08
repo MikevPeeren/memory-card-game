@@ -7,7 +7,7 @@ import IndexPage from './pages/IndexPage';
 import NewGamePage from './pages/GamePage';
 
 // Font Awesome
-import { library } from '@fortawesome/fontawesome-svg-core';
+import { library, dom } from '@fortawesome/fontawesome-svg-core';
 import {
 	faCoffee,
 	faAirFreshener,
