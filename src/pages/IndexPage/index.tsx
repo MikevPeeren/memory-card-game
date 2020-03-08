@@ -1,5 +1,11 @@
+// React
 import React from 'react';
-import '../../styles/index.css';
+import { Link } from 'react-router-dom';
+
+// CSS
+import './index.css';
+
+// Components
 import FlippableSquare from '../../components/FlippableSquare';
 
 const IndexPage = (): JSX.Element => {
@@ -51,9 +57,9 @@ const IndexPage = (): JSX.Element => {
 				frontText="P"
 				backText={
 					<div className="playgame">
-						<a href="/new-game" className="play">
+						<Link className="play" to="/new-game">
 							Play
-						</a>
+						</Link>
 					</div>
 				}
 			/>

@@ -1,7 +1,12 @@
+// React
 import React from 'react';
-import { Switch, BrowserRouter, Route } from 'react-router-dom';
+import { Switch, HashRouter, Route } from 'react-router-dom';
+
+// Pages
 import IndexPage from './pages/IndexPage';
 import NewGamePage from './pages/GamePage';
+
+// Font Awesome
 import { library } from '@fortawesome/fontawesome-svg-core';
 import {
 	faCoffee,
@@ -27,12 +32,12 @@ class App extends React.Component {
 	render() {
 		return (
 			<div>
-				<BrowserRouter>
+				<HashRouter basename={process.env.PUBLIC_URL}>
 					<Switch>
-						<Route exact={true} path="/" component={IndexPage} />
-						<Route exact={true} path="/new-game" component={NewGamePage} />
+						<Route exact path={'/'} component={IndexPage} />
+						<Route exact path={'/new-game'} component={NewGamePage} />
 					</Switch>
-				</BrowserRouter>
+				</HashRouter>
 			</div>
 		);
 	}
