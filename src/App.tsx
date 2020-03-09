@@ -7,7 +7,7 @@ import IndexPage from './pages/IndexPage';
 import NewGamePage from './pages/GamePage';
 
 // Font Awesome
-import { library, dom } from '@fortawesome/fontawesome-svg-core';
+import { library } from '@fortawesome/fontawesome-svg-core';
 import {
 	faCoffee,
 	faAirFreshener,
@@ -28,6 +28,7 @@ library.add(faCarrot);
 library.add(faCreditCard);
 library.add(faCookie);
 
+/* eslint-disable */
 class App extends React.Component {
 	render() {
 		return (
