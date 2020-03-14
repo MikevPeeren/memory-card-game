@@ -1,3 +1,5 @@
+![Build and Deploy](https://github.com/MikevPeeren/Memory-Card-Game/workflows/Build%20and%20Deploy/badge.svg)
+
 # Memory, the Card Game
 
 > Concentration, also known as Match Match, Match Up, Memory, Pelmanism, Shinkei-suijaku, Pexeso or simply Pairs, is a card
