@@ -1,7 +1,6 @@
 {
 	"name": "memory-card-game",
 	"version": "1.0.0",
-	"private": true,
 	"homepage": "http://mikevpeeren.github.io/Memory-Card-Game",
 	"dependencies": {
 		"@fortawesome/fontawesome-svg-core": "^1.2.27",
