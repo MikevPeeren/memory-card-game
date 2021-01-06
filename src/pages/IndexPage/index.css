@@ -1,109 +1,125 @@
 /* Defining the Body Color */
 body {
-	background: #333;
+  background: #333;
 }
 
 /* Basic information to display information to the User */
 .info {
-	font-size: 21px;
-	text-align: center;
-	color: rgba(255, 255, 255, 0.3);
-	padding: 0 25px;
+  font-size: 21px;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.3);
+  padding: 0 25px;
 }
 
 /* The Container that keeps consists of all the cards. */
 .card-container {
-	display: block;
-	background-color: transparent;
-	perspective: 1000px;
-	width: 450px;
-	height: 450px;
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	margin: -225px 0 0 -225px;
+  display: block;
+  background-color: transparent;
+  perspective: 1000px;
+  width: 450px;
+  height: 450px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -225px 0 0 -225px;
 }
 
 /* Default Card properties */
 .card {
-	background-color: #16a085;
-	display: inline-block;
-	width: 50%;
-	height: 50%;
-	cursor: default;
-	position: relative;
-	vertical-align: top;
-	transition: transform 0.8s;
-	transform-style: preserve-3d;
-	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-	border: 0px !important;
+  background-color: #16a085;
+  display: inline-block;
+  width: 50%;
+  height: 50%;
+  cursor: default;
+  position: relative;
+  vertical-align: top;
+  -webkit-transition: -webkit-transform 0.8s;
+  -moz-transition: transform 0.8s;
+  -ms-transition: transform 0.8s;
+  -o-transition: transform 0.8s;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  border: 0px !important;
 }
 
 /* Default Card text properties that are for both Front and Back Cards.*/
 .card-text {
-	font-family: 'Open Sans';
-	text-align: center;
-	text-transform: uppercase;
-	-webkit-text-stroke: 1px #fff;
-	color: #fff;
-	box-shadow: inset 0 0 0 1px #333;
-	backface-visibility: hidden;
+  font-family: 'Open Sans';
+  text-align: center;
+  text-transform: uppercase;
+  -webkit-text-stroke: 1px #fff;
+  color: #fff;
+  box-shadow: inset 0 0 0 0.8px #333;
+  backface-visibility: hidden;
 }
 
 /* The style of a Card when it is not yet flipped */
 .card-text.front {
-	line-height: 225px;
-	font-size: 130px;
-	transform: rotateZ(0deg);
+  line-height: 225px;
+  font-size: 130px;
+  -webkit-transform: rotateZ(0deg);
+  -moz-transform: rotateZ(0deg);
+  -ms-transform: rotateZ(0deg);
+  -o-transform: rotateZ(0deg);
+  transform: rotateZ(0deg);
 }
 
 /* The style of a Card when it IS flipped */
 .card-text.back {
-	font-size: 10px;
-	width: 225px;
-	height: 225px;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	position: absolute;
-	transform: rotateY(180deg);
+  font-size: 10px;
+  width: 225px;
+  height: 225px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  -webkit-transform: rotateY(180deg);
+  -moz-transform: rotateY(180deg);
+  -ms-transform: rotateY(180deg);
+  -o-transform: rotateY(180deg);
+  transform: rotateY(180deg);
 }
 
 .instructions {
-	font-size: 11px;
-	text-transform: capitalize;
-	-webkit-text-stroke: 0px #fff;
+  font-size: 11px;
+  text-transform: capitalize;
+  -webkit-text-stroke: 0px #fff;
 }
 
 /* Property for a card to have an animation to be flipped. */
 .card.flipped {
-	transform: rotateY(180deg);
+  -webkit-transform: rotateY(180deg);
+  -moz-transform: rotateY(180deg);
+  -ms-transform: rotateY(180deg);
+  -o-transform: rotateY(180deg);
+  transform: rotateY(180deg);
 }
 
 /* The Background of a Card when it is active, and not moveable */
 .card-active {
-	background: #c0392b;
+  background: #c0392b;
 }
 
 /* The A Href to play the game and be redirected to a new Route */
 .play,
 .play:hover {
-	text-decoration: none;
-	color: #fff;
-	display: block;
-	font-size: 55px;
-	text-transform: uppercase;
-	text-align: center;
-	padding: 0;
-	margin: 0 1px;
+  text-decoration: none;
+  color: #fff;
+  display: block;
+  font-size: 55px;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 0;
+  margin: 0 1px;
 }
 
 /* Making the DIV have the Max Width. */
 .playgame {
-	width: 100%;
+  width: 100%;
 }
 
 /* Displaying a transparent Hover over the DIV */
 .playgame:hover {
-	background: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.2);
 }
