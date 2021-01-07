@@ -4,7 +4,7 @@ import './newgame.css';
 import Game from '../../components/Game';
 
 const NewGamePage = (): JSX.Element => {
-	return <Game />;
+  return <Game />;
 };
 
 export default NewGamePage;

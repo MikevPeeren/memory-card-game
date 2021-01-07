@@ -9,14 +9,14 @@ import NewGamePage from './pages/GamePage';
 // Font Awesome
 import { library } from '@fortawesome/fontawesome-svg-core';
 import {
-	faCoffee,
-	faAirFreshener,
-	faBaby,
-	faAmbulance,
-	faCoins,
-	faCarrot,
-	faCreditCard,
-	faCookie,
+  faCoffee,
+  faAirFreshener,
+  faBaby,
+  faAmbulance,
+  faCoins,
+  faCarrot,
+  faCreditCard,
+  faCookie,
 } from '@fortawesome/free-solid-svg-icons';
 
 library.add(faCoffee);
@@ -30,18 +30,18 @@ library.add(faCookie);
 
 /* eslint-disable */
 class App extends React.Component {
-	render() {
-		return (
-			<div>
-				<HashRouter basename={process.env.PUBLIC_URL}>
-					<Switch>
-						<Route exact path={'/'} component={IndexPage} />
-						<Route exact path={'/new-game'} component={NewGamePage} />
-					</Switch>
-				</HashRouter>
-			</div>
-		);
-	}
+  render() {
+    return (
+      <div>
+        <HashRouter basename={process.env.PUBLIC_URL}>
+          <Switch>
+            <Route exact path={'/'} component={IndexPage} />
+            <Route exact path={'/new-game'} component={NewGamePage} />
+          </Switch>
+        </HashRouter>
+      </div>
+    );
+  }
 }
 
 export default App;

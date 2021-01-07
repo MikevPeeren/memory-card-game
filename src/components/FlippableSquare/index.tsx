@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-types */
 // React
 import React, { Component } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -47,7 +48,7 @@ class FlippableSquare extends Component<FlippableSquareProps, FlippableSquareSta
     hasBeenMatched: false,
   };
 
-  handleClick = () => {
+  handleClick = (): void => {
     if (this.props.hasBeenMatched) return;
 
     if (this.props.handleClick) {
