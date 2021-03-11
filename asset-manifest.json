@@ -5,15 +5,15 @@
     "main.js.map": "/Memory-Card-Game/static/js/main.c213c2c9.chunk.js.map",
     "runtime-main.js": "/Memory-Card-Game/static/js/runtime-main.edaa17c7.js",
     "runtime-main.js.map": "/Memory-Card-Game/static/js/runtime-main.edaa17c7.js.map",
-    "static/js/2.5cf2db40.chunk.js": "/Memory-Card-Game/static/js/2.5cf2db40.chunk.js",
-    "static/js/2.5cf2db40.chunk.js.map": "/Memory-Card-Game/static/js/2.5cf2db40.chunk.js.map",
+    "static/js/2.2a8253bc.chunk.js": "/Memory-Card-Game/static/js/2.2a8253bc.chunk.js",
+    "static/js/2.2a8253bc.chunk.js.map": "/Memory-Card-Game/static/js/2.2a8253bc.chunk.js.map",
     "index.html": "/Memory-Card-Game/index.html",
     "static/css/main.f789c2ed.chunk.css.map": "/Memory-Card-Game/static/css/main.f789c2ed.chunk.css.map",
-    "static/js/2.5cf2db40.chunk.js.LICENSE.txt": "/Memory-Card-Game/static/js/2.5cf2db40.chunk.js.LICENSE.txt"
+    "static/js/2.2a8253bc.chunk.js.LICENSE.txt": "/Memory-Card-Game/static/js/2.2a8253bc.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.edaa17c7.js",
-    "static/js/2.5cf2db40.chunk.js",
+    "static/js/2.2a8253bc.chunk.js",
     "static/css/main.f789c2ed.chunk.css",
     "static/js/main.c213c2c9.chunk.js"
   ]
