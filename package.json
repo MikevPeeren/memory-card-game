@@ -45,7 +45,7 @@
   "devDependencies": {
     "@types/classnames": "^2.3.1",
     "@types/jest": "^26.0.24",
-    "@types/node": "^15.12.5",
+    "@types/node": "^16.3.2",
     "@types/react": "^17.0.14",
     "@types/react-dom": "^17.0.9",
     "@types/react-router-dom": "^5.1.8",
