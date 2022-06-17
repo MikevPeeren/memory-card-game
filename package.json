@@ -9,7 +9,7 @@
     "@fortawesome/react-fontawesome": "^0.1.18",
     "bootstrap": "^4.6.0",
     "classnames": "^2.3.1",
-    "react": "^18.1.0",
+    "react": "^18.2.0",
     "react-bootstrap": "^2.4.0",
     "react-dom": "^18.1.0",
     "react-router-dom": "^6.3.0"
@@ -46,7 +46,7 @@
     "@types/classnames": "^2.3.1",
     "@types/jest": "^27.5.1",
     "@types/node": "^17.0.42",
-    "@types/react": "^17.0.43",
+    "@types/react": "^18.0.14",
     "@types/react-dom": "^18.0.5",
     "@types/react-router-dom": "^5.3.3",
     "@typescript-eslint/eslint-plugin": "^4.33.0",
